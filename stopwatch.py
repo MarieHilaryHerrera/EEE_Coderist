@@ -49,3 +49,50 @@ def stop():
         self_job=None
     stop_button.place_forget()
     resume_button.place(x=100,y=300, width=150,height=50)
+  
+def resume():
+    start_button.place_forget()
+    resume_button.place_forget()
+    stop_button.place(x=100,y=300, width=150,height=50)
+    global time_elapsed1,time_elapsed2,time_elapsed3,time1,self_job,time2
+    time2=int(time.time())
+    if time2!=time1:
+        time1=time2
+        if time_elapsed1<59:
+            time_elapsed1+=1
+            clock_frame.config(text=(str(time_elapsed3).zfill(2)+":"+str(time_elapsed2).zfill(2)+":"+str(time_elapsed1).zfill(2)))
+        else: 
+            time_elapsed1=0
+            time_elapsed3+=1
+            if time_elapsed3>=24:
+                time_elapsed1=0
+                time_elapsed2=0
+                time_elapsed3=0
+            else:
+                time_elapsed3+=1
+                clock_frame.config(text=(str(time_elapsed3).zfill(2)+":"+str(time_elapsed2).zfill(2)+":"+str(time_elapsed1).zfill(2)))
+    self_job=root.after(1000,start)
+
+def clear():
+    global time_elapsed1,time_elapsed2,time_elapsed3,time1,self_job,time2,label,i,j
+    try:
+        stop()
+    except:
+        start()
+        stop()
+    clock_frame.config(text="00:00:00")
+    time_elapsed1=0
+    time_elapsed2=0
+    time_elapsed3=0
+    time1=0
+    time2=0
+    i=0
+    j=0
+    wig=root.winfo_children()
+    for b in wig:
+        b.place_forget()
+        resume_button.place_forget()
+        start_button.place(x=100,y=300, width=150,height=50)
+        lap_button.place(x=730,y=300, width=150,height=50)
+        reset_button.place(x=415,y=300, width=150,height=50)
+        clock_frame.place(x=200,y=100, width=600,height=100)
