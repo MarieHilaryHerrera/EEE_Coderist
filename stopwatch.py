@@ -96,3 +96,27 @@ def clear():
         lap_button.place(x=730,y=300, width=150,height=50)
         reset_button.place(x=415,y=300, width=150,height=50)
         clock_frame.place(x=200,y=100, width=600,height=100)
+        
+def lap():
+    global time_elapsed1,time_elapsed2,time_elapsed3,time1,self_job,time2,i,j
+    if i <9:
+        create_label((str(time_elapsed3).zfill(2)+":"+str(time_elapsed2).zfill(2)+":"+str(time_elapsed1).zfill(2)),20+(110*i),400+(j*50))
+    else:
+        j+=1
+        i=0
+        create_label((str(time_elapsed3).zfill(2)+":"+str(time_elapsed2).zfill(2)+":"+str(time_elapsed1).zfill(2)),20+(110*i),400+(j*50))
+    i+=1
+
+clock_frame=Label(text="00:00:00",bg="white",fg="black",font=("default",100))
+start_button=Button(text="START",bg="white",fg="black",font=("default",20),command=start)
+stop_button=Button(text="STOP",bg="white",fg="black", fonr=("default",20),command=stop)
+resume_button=Button(text="RESUME",bg="white",fg="black",font=("default",20),command=resume)
+lap_button=Button(text="LAP",bg="white",fg="black",font=("default",20),command=lap)
+reset_button=Button(text="RESET",bg="white",fg="black",font=("default",20),command=clear)
+
+start_button.place(x=100,y=300, width=150,height=50)
+lap_button.place(x=730,y=300, width=150,height=50)
+reset_button.place(x=415,y=300, width=150,height=50)
+clock_frame.place(x=200,y=100, width=600,height=100)
+
+root.mainloop()
