@@ -109,7 +109,7 @@ def lap():
 
 clock_frame=Label(text="00:00:00",bg="white",fg="black",font=("default",100))
 start_button=Button(text="START",bg="white",fg="black",font=("default",20),command=start)
-stop_button=Button(text="STOP",bg="white",fg="black", fonr=("default",20),command=stop)
+stop_button=Button(text="STOP",bg="white",fg="black", font=("default",20),command=stop)
 resume_button=Button(text="RESUME",bg="white",fg="black",font=("default",20),command=resume)
 lap_button=Button(text="LAP",bg="white",fg="black",font=("default",20),command=lap)
 reset_button=Button(text="RESET",bg="white",fg="black",font=("default",20),command=clear)
